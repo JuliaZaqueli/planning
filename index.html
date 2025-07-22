@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Organizador Pessoal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Meu Organizador</h1>
+            <div class="date-display">
+                <span id="current-date"></span>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li class="active"><a href="#"><i class="fas fa-calendar-day"></i> Rotina</a></li>
+                <li><a href="#"><i class="fas fa-wallet"></i> Finanças</a></li>
+            </ul>
+        </nav>
+
+        <div class="view-selector">
+            <button id="day-view" class="active">Dia</button>
+            <button id="week-view">Semana</button>
+            <button id="month-view">Mês</button>
+        </div>
+
+        <main>
+            <!-- Aba Diária -->
+            <div class="day-view">
+                <div class="filters">
+                    <select id="filter-period">
+                        <option value="today">Hoje</option>
+                        <option value="custom">Data específica</option>
+                    </select>
+                    <input type="date" id="filter-date" class="hidden">
+                    <select id="filter-time">
+                        <option value="all">Todos os horários</option>
+                        <option value="morning">Manhã (5h-12h)</option>
+                        <option value="afternoon">Tarde (12h-18h)</option>
+                        <option value="evening">Noite (18h-23h)</option>
+                    </select>
+                </div>
+                <div class="time-slots">
+                    <!-- Grade horária será gerada dinamicamente -->
+                </div>
+                <div class="tasks">
+                    <h2>Tarefas do Dia</h2>
+                    <ul id="daily-tasks">
+                        <!-- Tarefas serão adicionadas aqui -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Aba Semanal -->
+            <div class="week-view hidden">
+                <div class="week-days">
+                    <!-- Gerado dinamicamente -->
+                </div>
+            </div>
+
+            <!-- Aba Mensal -->
+            <div class="month-view hidden">
+                <div class="month-header">
+                    <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                    <h2 id="month-year"></h2>
+                    <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="month-calendar">
+                    <!-- Gerado dinamicamente -->
+                </div>
+            </div>
+        </main>
+
+        <div class="add-task">
+            <button id="open-task-form"><i class="fas fa-plus"></i> Adicionar Tarefa</button>
+        </div>
+
+        <div id="task-form-modal" class="modal hidden">
+            <div class="modal-content">
+                <button id="modal-close-btn" class="close-btn">&times;</button>
+                <h2>Nova Tarefa</h2>
+                <form id="task-form">
+                    <div class="form-group">
+                        <label for="task-title">Título:</label>
+                        <input type="text" id="task-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-description">Descrição:</label>
+                        <textarea id="task-description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group" id="task-date-group">
+                        <label for="task-date">Data:</label>
+                        <input type="date" id="task-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-time">Hora:</label>
+                        <input type="time" id="task-time">
+                    </div>
+                    <div class="form-group">
+                        <label for="task-type">Tipo:</label>
+                        <select id="task-type">
+                            <option value="daily">Diária</option>
+                            <option value="specific">Pontual</option>
+                        </select>
+                    </div>
+                    <button type="submit">Salvar Tarefa</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
